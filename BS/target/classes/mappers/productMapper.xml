@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.bs.mappers.productMapper">
+    <!-- 01. 상품 전체 목록 -->
+    <select id="listProduct" resultType="com.bs.vo.ProductVO">
+    
+        SELECT  
+            id AS productId,
+            name AS productName,
+            price AS productPrice,
+            url AS productUrl,
+            detail AS productDetail
+        FROM product_blended 
+        ORDER BY name
+    </select>
+    <!-- 02. 상품 상세보기 -->
+    <select id="detailProduct" resultType="com.bs.vo.ProductVO">
+        SELECT
+            id AS productId, 
+            name AS productName, 
+            price AS productPrice, 
+            url AS productUrl,
+            detail AS productDetail
+        FROM product_blended 
+        WHERE id = #{productId}
+    </select>
+
+
+
+
+</mapper>
